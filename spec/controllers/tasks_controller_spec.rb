@@ -146,10 +146,10 @@ RSpec.describe(TasksController) do
 
         task = create(:task, user: user)
 
-        put :update, params: { id: task, task: task.attributes.merge(title: "test123", status: 2) }
+        put :update, params: { id: task, task: task.attributes.merge(title: "test123", status: :open) }
 
         expect(task.reload.title).to(eq("test123"))
-        expect(task.reload.status).to(eq(2))
+        expect(task.reload.status).to(eq("open"))
         expect(response).to(redirect_to(task_url(task)))
       end
     end
