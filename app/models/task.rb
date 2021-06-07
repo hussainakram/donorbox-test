@@ -4,4 +4,6 @@ class Task < ApplicationRecord
 
   validates :title, presence: true, uniqueness: { scope: :user_id }
   validates :status, presence: true
+
+  enum status: [:open, :work_in_progress, :closed]
 end
