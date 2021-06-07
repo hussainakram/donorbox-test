@@ -26,7 +26,7 @@ RSpec.describe(TasksController) do
 
       get :index
 
-      expect(response).to(have_http_status(:ok))
+      expect(response).to(be_successful)
       expect(response).to(render_template(:index))
       expect(assigns(:tasks)).to(eq(tasks))
     end
@@ -68,8 +68,9 @@ RSpec.describe(TasksController) do
 
         task_params = build(:task, user: user).attributes
 
-        expect(response).to(have_http_status(:ok))
+        expect(response).to(be_successful)
         expect { post(:create, params: { task: task_params }) }.to(change(Task, :count).by(1))
+        expect(response).to(redirect_to(task_url(Task.last)))
       end
     end
   end
@@ -124,6 +125,7 @@ RSpec.describe(TasksController) do
         put :update, params: { id: task, task: task.attributes.merge(status: nil) }
 
         expect(response).to(have_http_status(302))
+        expect(response).to(be_redirect)
       end
 
       it "user as nil" do
@@ -134,6 +136,7 @@ RSpec.describe(TasksController) do
         put :update, params: { id: task, task: task.attributes.merge(user_id: nil) }
 
         expect(response).to(have_http_status(302))
+        expect(response).to(be_redirect)
       end
     end
 
@@ -147,7 +150,7 @@ RSpec.describe(TasksController) do
 
         expect(task.reload.title).to(eq("test123"))
         expect(task.reload.status).to(eq(2))
-        expect(response).to(be_redirect)
+        expect(response).to(redirect_to(task_url(task)))
       end
     end
   end
@@ -160,27 +163,26 @@ RSpec.describe(TasksController) do
       task = create(:task, user: second_user)
       delete :destroy, params: { id: task.id }
 
+      expect(response).to(be_redirect)
       expect(response).to(have_http_status(302))
     end
 
     it "do not delete with invalid id" do
       signin_as_confirmed_user
 
-      second_user = create(:user)
-      task = create(:task, user: second_user)
-      delete :destroy, params: { id: 'xx' }
+      delete :destroy, params: { id: "xx" }
 
+      expect(response).to(be_redirect)
       expect(response).to(have_http_status(302))
     end
 
-    it "do not delete with invalid id" do
+    it "deletes with valid id" do
       signin_as_confirmed_user
 
-      second_user = create(:user)
-      task = create(:task, user: second_user)
-      delete :destroy, params: { id: 'xx' }
+      task = create(:task, user: user)
 
-      expect(response).to(have_http_status(302))
+      expect { delete(:destroy, params: { id: task.id }) }.to(change(Task, :count).by(-1))
+      expect(response).to(redirect_to(tasks_url))
     end
   end
 
