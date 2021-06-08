@@ -4,7 +4,7 @@ class AddContactTagJob < ApplicationJob
     user = User.find_by(id: user_id)
     return if user.nil? || user.contact_id.nil?
 
-    service_object = ActiveCompaignService.new(user)
+    service_object = ActiveCampaignService.new(user)
     contact_tags = service_object.contact_tags
     # return if same tag already exists for this contact
     return if contact_tags.any? do |tag|

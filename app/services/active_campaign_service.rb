@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 include ApiHelpers
 
-class ActiveCompaignService
+class ActiveCampaignService
   def initialize(user)
     @user = user
   end

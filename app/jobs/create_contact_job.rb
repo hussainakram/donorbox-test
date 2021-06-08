@@ -4,7 +4,7 @@ class CreateContactJob < ApplicationJob
     user = User.find_by(id: user_id)
     return if user.nil? || user.contact_id.present?
 
-    service_object = ActiveCompaignService.new(user)
+    service_object = ActiveCampaignService.new(user)
     contact = service_object.create_contact
 
     if contact.present?

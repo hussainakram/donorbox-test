@@ -7,9 +7,9 @@ class Task < ApplicationRecord
 
   enum status: [:open, :work_in_progress, :closed]
 
-  after_create :add_tag_on_active_compaign, if: :first_task?
+  after_create :add_tag_on_active_campaign, if: :first_task?
 
-  def add_tag_on_active_compaign
+  def add_tag_on_active_campaign
     # TODO: replace perform_now with perform_later
     AddContactTagJob.perform_now(user_id: user.id, tag_id: 1)
   end

@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 require "rails_helper"
 
-describe ActiveCompaignService do
+describe ActiveCampaignService do
   context "manage contacts" do
     let!(:user) { double(:user) }
     let!(:real_user) { create(:user, email: "test_2@test.com") }
-    let!(:service_object) { instance_double(ActiveCompaignService) }
+    let!(:service_object) { instance_double(ActiveCampaignService) }
 
     it "initializes class object with user" do
-      allow(ActiveCompaignService).to(receive(:new).with(user))
+      allow(ActiveCampaignService).to(receive(:new).with(user))
     end
 
     it "#create_contact" do

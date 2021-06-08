@@ -18,15 +18,15 @@ RSpec.describe(Task, type: :model) do
     let!(:task_1) { build(:task, user: user) }
     let!(:task_2) { build(:task, user: user) }
 
-    it "triggers add_tag_on_active_compaign on creating first task" do
-      expect(task_1).to(receive(:add_tag_on_active_compaign))
+    it "triggers add_tag_on_active_campaign on creating first task" do
+      expect(task_1).to(receive(:add_tag_on_active_campaign))
       task_1.save!
     end
 
-    it "do not trigger add_tag_on_active_compaign on create for second task" do
+    it "do not trigger add_tag_on_active_campaign on create for second task" do
       task_1.save!
 
-      expect(task_2).to_not(receive(:add_tag_on_active_compaign))
+      expect(task_2).to_not(receive(:add_tag_on_active_campaign))
       task_2.save!
     end
   end
