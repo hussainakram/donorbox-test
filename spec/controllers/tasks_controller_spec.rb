@@ -51,15 +51,6 @@ RSpec.describe(TasksController) do
         expect { post(:create, params: { task: task_params }) }.to(change(Task, :count).by(0))
         expect(response).to(have_http_status(:unprocessable_entity))
       end
-
-      it "user as nil" do
-        signin_as_confirmed_user
-
-        task_params = build(:task, user: nil).attributes
-
-        expect { post(:create, params: { task: task_params }) }.to(change(Task, :count).by(0))
-        expect(response).to(have_http_status(:unprocessable_entity))
-      end
     end
 
     context "create a task" do
