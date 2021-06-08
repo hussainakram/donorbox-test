@@ -49,7 +49,7 @@ jobs:
       - name: Test with RSpec
         env:
           RAILS_ENV: "test"
-          DATABASE_URL: "postgres://postgres@localhost:5432/test_database_name"
+          DATABASE_URL: "postgres://postgres@localhost:5432/donorbox_test"
           RUBYOPT: "-W:no-deprecated -W:no-experimental"
         run: |
           bundle exec rails db:setup
