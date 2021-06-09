@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 class ApplicationMailer < ActionMailer::Base
-  default from: "support@donorbox-test.com"
+  default from: ENV["SUPPORT_EMAIL"]
   layout "mailer"
 end
