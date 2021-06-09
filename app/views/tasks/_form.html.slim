@@ -11,8 +11,5 @@
     = f.text_field :title
   .field
     = f.label :status
-    = f.number_field :status
-  .field
-    = f.label :user_id
-    = f.text_field :user_id
+    = f.select :status, options_for_select(Task.statuses.map { |k, _| [k.capitalize, k]})
   .actions = f.submit

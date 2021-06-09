@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://donorbox6549.api-us1.com/api/3/contacts
+    body:
+      encoding: UTF-8
+      string: '{"contact":{"email":"test_2@test.com","first_name":"test","last_name":"user"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Api-Token:
+      - 2b56a6b170950159d22feabca2c58d9523b331a2f6c92cd096e63fd4393cfd08f15a3b3c
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Tue, 08 Jun 2021 20:30:53 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1871'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Content-Type, origin, x-requested-with
+      Access-Control-Allow-Methods:
+      - POST, GET
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - PHPSESSID=97ba6776ec048f229ff5e520c2d75075; path=/; HttpOnly
+      - em_acp_globalauth_cookie=5d839133-c2fb-48a2-b82f-1e4a7f44116c; path=/; domain=.donorbox6549.api-us1.com;
+        secure; httponly
+      - em_acp_globalauth_cookie=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0;
+        path=/; domain=.donorbox6549.api-us1.com
+      - em_acp_globalauth_cookie=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0;
+        path=/; domain=.donorbox6549.api-us1.com
+      - em_acp_globalauth_cookie=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0;
+        path=/; domain=.donorbox6549.api-us1.com
+      X-Content-Type-Options:
+      - nosniff
+      X-Envoy-Upstream-Service-Time:
+      - '285'
+      X-Request-Id:
+      - e40b088f-3ad3-4a0a-8bae-92456cfb724c
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Request-Id:
+      - 0a8eeb360a000017e3f1030000000001
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 65c4e169a89d17e3-DXB
+    body:
+      encoding: UTF-8
+      string: '{"contact":{"email":"test_2@test.com","firstName":"test","lastName":"user","email_empty":false,"cdate":"2021-06-08T15:30:53-05:00","udate":"2021-06-08T15:30:53-05:00","orgid":"","orgname":"","links":{"bounceLogs":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/bounceLogs","contactAutomations":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/contactAutomations?limit=1000&orders%5Blastdate%5D=DESC","contactData":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/contactData","contactGoals":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/contactGoals","contactLists":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/contactLists","contactLogs":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/contactLogs","contactTags":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/contactTags","contactDeals":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/contactDeals","deals":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/deals","fieldValues":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/fieldValues","geoIps":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/geoIps","notes":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/notes","organization":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/organization","plusAppend":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/plusAppend","trackingLogs":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/trackingLogs","scoreValues":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/scoreValues","accountContacts":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/accountContacts","automationEntryCounts":"https:\/\/donorbox6549.api-us1.com\/api\/3\/contacts\/31\/automationEntryCounts"},"hash":"43f6319b26ee088120b3e2dc2ae4f786","id":"31","organization":""}}'
+  recorded_at: Tue, 08 Jun 2021 20:30:52 GMT
+recorded_with: VCR 6.0.0

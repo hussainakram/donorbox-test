@@ -49,8 +49,10 @@ jobs:
       - name: Test with RSpec
         env:
           RAILS_ENV: "test"
-          DATABASE_URL: "postgres://postgres@localhost:5432/test_database_name"
+          DATABASE_URL: "postgres://postgres@localhost:5432/donorbox_test"
           RUBYOPT: "-W:no-deprecated -W:no-experimental"
+          ACTIVE_COMPAIGN_BASE_URL: ${{ secrets.ACTIVE_COMPAIGN_BASE_URL }}
+          ACTIVE_COMPAIGN_API_KEY: ${{ secrets.ACTIVE_COMPAIGN_API_KEY }}
         run: |
           bundle exec rails db:setup
           bundle exec rspec
