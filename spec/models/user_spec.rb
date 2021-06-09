@@ -15,7 +15,7 @@ RSpec.describe(User, type: :model) do
     it "destroys dependent tasks" do
       user.destroy!
 
-      expect(user.tasks.count).to eq(0)
+      expect(user.tasks.count).to(eq(0))
     end
   end
 end
