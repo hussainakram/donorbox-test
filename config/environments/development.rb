@@ -65,16 +65,6 @@ Rails.application.configure do
   # configuration for devise mailer
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: "smtp.sendgrid.net",
-    port: 587,
-    user_name: "apikey",
-    password: ENV["SENDGRID_API_KEY"],
-    authentication: "plain",
-    enable_starttls_auto: true,
-  }
-
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
