@@ -42,3 +42,5 @@ yarn-debug.log*
 yarn-debug.log*
 .yarn-integrity
 .env
+**/.DS_Store
+.DS_Store
