@@ -11,7 +11,7 @@ describe ActiveCampaignService do
       allow(ActiveCampaignService).to(receive(:new).with(user))
     end
 
-    #TODO: this spec not running on Github CI
+    # TODO: this spec not running on Github CI
     # it "#create_contact" do
     #   VCR.use_cassette("create_contact") do
     #     service_object = described_class.new(real_user)
