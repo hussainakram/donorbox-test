@@ -1,0 +1,10 @@
+nav.p-2.flex.justify-between.shadow
+  = link_to (image_tag "logo.svg" ), root_path, class: "bg-transparent"
+  ul.flex.py-2
+    li.mr-1
+      = link_to  "Home", root_path, class: "yellow-400"
+    li.mr-1
+      = link_to  "Profile", edit_user_registration_path
+    - if user_signed_in?
+      li.mr-1
+        = link_to  "Logout", destroy_user_session_path, method: :delete

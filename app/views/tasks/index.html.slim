@@ -1,20 +1,20 @@
-h1 Tasks Dashboard
+.text-xl.font-extrabold.mb-4.text-yellow-900 Tasks Dashboard
 
-.js-search-tasks
-  .flex
+.js-search-tasks.mb-5
+  .flex.items-center
     label Search by: 
-    select.js-search-by-dropdown.search-by-dropdown
+    select.js-search-by-dropdown.search-by-dropdown.p-1.rounded.mr-1.w-36.font-bold
       option value="title" Title
       option value="status" Status
       option value="created_at" Created At
-    select.js-status-dropdown.status-dropdown.hidden name="query"
+    select.js-status-dropdown.status-dropdown.hidden.p-1.rounded.w-48 name="query"
       option value="" disabled="disabled" selected="selected" Select Task Status
       option value="open" Open
       option value="work_in_progress" Work In Progress
       option value="closed" Closed
-    input.js-date-input.date-input.hidden name="query" type="date"
-    input.js-query-input.query-input name="query" type="text" / 
-    button.js-search-btn.search-btn Submit
+    input.js-date-input.date-input.hidden.p-1.rounded name="query" type="date"
+    input.js-query-input.query-input.p-1.rounded name="query" type="text" / 
+    button.js-search-btn.search-btn.mx-1.text-white.bg-pink-800.rounded.p-1 Submit
   .js-error-msg
 br
 
