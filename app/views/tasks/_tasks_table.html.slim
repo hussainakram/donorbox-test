@@ -1,0 +1,22 @@
+table.tasks-table
+  thead
+    tr
+      th Title
+      th Status
+      th User
+      th
+      th
+      th
+
+  tbody
+    - tasks.each do |task|
+      tr
+        td = task.title
+        td.status = task.status
+        td = task.user.email
+        td.created-at = task.created_at.strftime("%d/%m/%Y")
+        td = link_to 'Show', task
+        td = link_to 'Edit', edit_task_path(task)
+        td = link_to 'Destroy', task, data: { confirm: 'Are you sure?' }, method: :delete
+
+br

@@ -55,4 +55,4 @@ jobs:
           ACTIVE_COMPAIGN_API_KEY: ${{ secrets.ACTIVE_COMPAIGN_API_KEY }}
         run: |
           bundle exec rails db:setup
-          bundle exec rspec
+          bundle exec rspec --exclude-pattern "**/features/*_spec.rb"
