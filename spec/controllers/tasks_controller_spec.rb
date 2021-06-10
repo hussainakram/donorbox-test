@@ -73,7 +73,7 @@ RSpec.describe(TasksController) do
       it "by date" do
         signin_as_confirmed_user
 
-        get :index, params: { search_by: "created_at", query: Date.yesterday }
+        get :index, params: { search_by: "created_at", query: 1.days.ago }
 
         expect(response).to(be_successful)
         expect(assigns(:tasks)).to(eq([searched_task]))
