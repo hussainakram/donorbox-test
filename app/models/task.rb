@@ -2,13 +2,14 @@
 class Task < ApplicationRecord
   extend DateTimeHelpers
   SEARCH_COLUMN_NAMES = { Title: "title", Status: "status", Created_At: "created_at" }
+  STATUSES = { open: 0, work_in_progress: 1, closed: 2 }
 
   belongs_to :user
 
   validates :title, presence: true, uniqueness: { scope: :user_id }
   validates :status, presence: true
 
-  enum status: { open: 0, work_in_progress: 1, closed: 2 }
+  enum status: STATUSES
 
   after_create :add_tag_on_active_campaign, if: :first_task?
 

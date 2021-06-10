@@ -7,6 +7,7 @@ RSpec.describe(Task, type: :model) do
     it { should validate_uniqueness_of(:title).scoped_to(:user_id) }
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:status) }
+    it { is_expected.to define_enum_for(:status).with_values(Task::STATUSES.keys) }
   end
 
   describe "associations" do
