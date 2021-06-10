@@ -1,28 +1,21 @@
 # frozen_string_literal: true
 Capybara.register_driver(:chrome_headless) do |app|
   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    'goog:chromeOptions': {
-      args: ["no-sandbox", "headless", "disable-gpu"],
+    chromeOptions: { args: ["--headless", "--disable-gpu"] },
+    'goog:loggingPrefs': {
+      browser: "ALL",
     }
   )
-  Capybara::Selenium::Driver.new(app, browser: :chrome, desired_capabilities: capabilities)
-end
 
-# Ensure Log directory exists
-%x(mkdir -p tmp/selenium_logs)
+  options = ::Selenium::WebDriver::Chrome::Options.new
 
-Capybara.register_driver(:chrome) do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    'goog:chromeOptions': { args: ["start-maximized"] }
-  )
+  options.add_argument("--headless")
+  options.add_argument("--no-sandbox")
 
   Capybara::Selenium::Driver.new(
     app,
     browser: :chrome,
     desired_capabilities: capabilities,
-    driver_opts: {
-      log_path: "./tmp/selenium_logs/selenium-#{Time.now.to_i}.log",
-      verbose: true,
-    }
+    options: options
   )
 end
