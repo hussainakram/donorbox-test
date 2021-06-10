@@ -7,7 +7,7 @@ RSpec.describe(TasksController) do
   describe "GET /tasks" do
     let!(:tasks) { create_list(:task, 5, user: user) }
 
-    it "DO not render the index template for unsigned in user" do
+    it "Do not render the index template for unsigned in user" do
       get :index
 
       expect(response).to(have_http_status(302))
@@ -28,7 +28,56 @@ RSpec.describe(TasksController) do
 
       expect(response).to(be_successful)
       expect(response).to(render_template(:index))
-      expect(assigns(:tasks)).to(eq(tasks))
+      expect(assigns(:tasks)).to(eq(user.tasks))
+    end
+
+    context "filters tasks" do
+      let!(:searched_task) { create(:task, user: user, title: 'unique title', created_at: 1.days.ago) }
+
+      it "by search_by param as nil" do
+        signin_as_confirmed_user
+
+        get :index, params: { search_by: nil, query: "test" }
+
+        expect(response).to(be_successful)
+        expect(assigns(:tasks)).to(eq(user.tasks))
+      end
+
+      it "by query param as nil" do
+        signin_as_confirmed_user
+
+        get :index, params: { search_by: "title", query: nil }
+
+        expect(response).to(be_successful)
+        expect(assigns(:tasks)).to(eq(user.tasks))
+      end
+
+      it "by title" do
+        signin_as_confirmed_user
+
+        get :index, params: { search_by: "title", query: "unique"  }
+
+        expect(response).to(be_successful)
+        expect(assigns(:tasks)).to(eq([searched_task]))
+      end
+
+      it "by status" do
+        signin_as_confirmed_user
+
+        get :index, params: { search_by: "status", query: "closed" }
+
+        expect(response).to(be_successful)
+        expect(assigns(:tasks)).to(eq(Task.closed))
+      end
+
+      it "by date" do
+        signin_as_confirmed_user
+
+        get :index, params: { search_by: "created_at", query: Date.yesterday }
+
+        expect(response).to(be_successful)
+        expect(assigns(:tasks)).to(eq([searched_task]))
+      end
     end
   end
 
