@@ -14,3 +14,4 @@ Turbolinks.start()
 ActiveStorage.start()
 
 import "../css/application.scss"
+import "./search_tasks"

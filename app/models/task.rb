@@ -15,6 +15,8 @@ class Task < ApplicationRecord
   scope :by_user, ->(user) { where(user: user) if user.present? }
 
   def self.search(search_by:, value:)
+    return all unless search_by.present? && value.present?
+
     case search_by.to_sym
     when :title
       where("title ilike :title", title: "%#{value}%")
@@ -22,8 +24,6 @@ class Task < ApplicationRecord
       where(status: value.to_sym)
     when :created_at
       where(created_at: date_range_of(value))
-    else
-      all
     end
   end
 

@@ -1,25 +1,24 @@
-h1 Listing tasks
+h1 Tasks Dashboard
 
-table
-  thead
-    tr
-      th Title
-      th Status
-      th User
-      th
-      th
-      th
-
-  tbody
-    - @tasks.each do |task|
-      tr
-        td = task.title
-        td = task.status
-        td = task.user.email
-        td = link_to 'Show', task
-        td = link_to 'Edit', edit_task_path(task)
-        td = link_to 'Destroy', task, data: { confirm: 'Are you sure?' }, method: :delete
-
+.js-search-tasks
+  .flex
+    label Search by: 
+    select.js-search-by-dropdown
+      option value="title" Title
+      option value="status" Status
+      option value="created_at" Created At
+    select.js-status-dropdown.hidden name="query"
+      option value="" disabled="disabled" selected="selected" Select Task Status
+      option value="open" Open
+      option value="work_in_progress" Work In Progress
+      option value="closed" Closed
+    input.js-date-input.hidden name="query" type="date"
+    input.js-query-input name="query" type="text" / 
+    button.js-search-btn Submit
+  .js-error-msg
 br
+
+.js-tasks-container
+  = render partial: "tasks_table", locals: { tasks: @tasks }
 
 = link_to 'New Task', new_task_path

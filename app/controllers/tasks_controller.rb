@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 class TasksController < ApplicationController
   def index
-    @tasks = current_user.tasks.all
+    @tasks = current_user.tasks
+      .search(search_by: params[:search_by], value: params[:query])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
