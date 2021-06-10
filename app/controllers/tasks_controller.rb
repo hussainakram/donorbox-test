@@ -31,7 +31,6 @@ class TasksController < ApplicationController
         format.json { render(:show, status: :created, location: @task) }
       else
         format.html { render(:new, status: :unprocessable_entity) }
-        format.json { render(json: @task.errors, status: :unprocessable_entity) }
       end
     end
   end
@@ -44,7 +43,6 @@ class TasksController < ApplicationController
         format.json { render(:show, status: :ok, location: @task) }
       else
         format.html { render(:edit, status: :unprocessable_entity) }
-        format.json { render(json: @task.errors, status: :unprocessable_entity) }
       end
     end
   end
@@ -53,7 +51,6 @@ class TasksController < ApplicationController
     find_task.destroy!
     respond_to do |format|
       format.html { redirect_to(tasks_url, notice: "Task was successfully destroyed.") }
-      format.json { head(:no_content) }
     end
   end
 
