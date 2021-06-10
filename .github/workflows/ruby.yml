@@ -47,7 +47,10 @@ jobs:
       - name: Run Linter
         run: bundle exec rubocop
       - name: Install chromium-chromedriver
-        run: sudo apt-get install chromium-chromedriver
+        run: |
+          sudo apt-get update
+          sudo apt-get install google-chrome-stable
+          sudo apt-get install chromium-chromedriver
       - name: Test with RSpec
         env:
           RAILS_ENV: "test"
