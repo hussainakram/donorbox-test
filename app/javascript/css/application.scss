@@ -1,3 +1,40 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+body {
+  background-color: #e0f2fe;
+}
+
+a {
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: #b33866;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+input[type="submit"] {
+  color: white;
+  padding: 3px 5px;
+  border-radius: 3px;
+  background-color: #2563ebf2;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.actions {
+  margin: 15px 0;
+}
