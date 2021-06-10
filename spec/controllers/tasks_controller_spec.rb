@@ -32,7 +32,7 @@ RSpec.describe(TasksController) do
     end
 
     context "filters tasks" do
-      let!(:searched_task) { create(:task, user: user, title: 'unique title', created_at: 1.days.ago) }
+      let!(:searched_task) { create(:task, user: user, title: "unique title", created_at: 1.days.ago) }
 
       it "by search_by param as nil" do
         signin_as_confirmed_user
@@ -55,7 +55,7 @@ RSpec.describe(TasksController) do
       it "by title" do
         signin_as_confirmed_user
 
-        get :index, params: { search_by: "title", query: "unique"  }
+        get :index, params: { search_by: "title", query: "unique" }
 
         expect(response).to(be_successful)
         expect(assigns(:tasks)).to(eq([searched_task]))

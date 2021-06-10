@@ -3,18 +3,18 @@ h1 Tasks Dashboard
 .js-search-tasks
   .flex
     label Search by: 
-    select.js-search-by-dropdown
+    select.js-search-by-dropdown.search-by-dropdown
       option value="title" Title
       option value="status" Status
       option value="created_at" Created At
-    select.js-status-dropdown.hidden name="query"
+    select.js-status-dropdown.status-dropdown.hidden name="query"
       option value="" disabled="disabled" selected="selected" Select Task Status
       option value="open" Open
       option value="work_in_progress" Work In Progress
       option value="closed" Closed
-    input.js-date-input.hidden name="query" type="date"
-    input.js-query-input name="query" type="text" / 
-    button.js-search-btn Submit
+    input.js-date-input.date-input.hidden name="query" type="date"
+    input.js-query-input.query-input name="query" type="text" / 
+    button.js-search-btn.search-btn Submit
   .js-error-msg
 br
 
