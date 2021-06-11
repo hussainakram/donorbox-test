@@ -1,5 +1,5 @@
 
-$(document).ready(() => {
+$(document).on("turbolinks:load", () => {
   $(".js-search-tasks").each((_, element) => {
     const searchByDropdown = $(element).find('.js-search-by-dropdown');
     const statusDropdwon = $(element).find('.js-status-dropdown');
@@ -34,6 +34,10 @@ $(document).ready(() => {
     }
 
     searchSubmitBtn.on('click', submitSearch);
+    searchInput.on('keypress', (e) => {
+      if (e.which === 13) submitSearch();
+    });
+
 
     searchByDropdown.on('change', () => {
       resetInputFields();
