@@ -17,10 +17,23 @@ a {
   }
 }
 
-h1 {
+h1, h2 {
   font-size: 20px;
   font-weight: bold;
   margin: 10px 0;
+}
+
+input {
+  border: none;
+  border-radius: 3px;
+
+  &:hover {
+    box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+  }
+
+  :focus {
+    box-shadow: 0 0 5pt 2pt #D3D3D3;
+  }
 }
 
 input[type="submit"] {
